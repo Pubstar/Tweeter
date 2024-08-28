@@ -3,12 +3,23 @@
 import React, { useState } from 'react'
 import Nav from '../Components/Nav'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
 
 interface User {
   email: string,
   password: string
 }
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAuLrUqllkAjCX5-VMb99mdnUxkhvbDkPo",
+  authDomain: "tweeter-c814e.firebaseapp.com",
+  projectId: "tweeter-c814e",
+  storageBucket: "tweeter-c814e.appspot.com",
+  messagingSenderId: "806481311122",
+  appId: "1:806481311122:web:33d22e3d688610c8eb3d4b"
+};
+
+const app = initializeApp(firebaseConfig);
 
 function createUser(email: string, password: string): User {
   const auth = getAuth();
@@ -33,7 +44,7 @@ function page() {
   const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitForm = (e) => {
+  const submitForm = (e: { preventDefault: () => void; }) => {
     // We don't want the page to refresh
     e.preventDefault()
   
