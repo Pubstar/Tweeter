@@ -1,19 +1,42 @@
 import Link from 'next/link'
 import React from 'react'
+import {auth} from '../firebase';
+import { useRouter } from 'next/navigation';
 
 function Nav() {
+
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    auth.signOut();
+    router.push('/');
+  }
+
   return (
     <nav className="bg-[#243010] text-[#CAD593] flex justify-between py-4 px-12">
     <div>
       <Link href="/"><span className="font-extrabold text-2xl">Tweeter</span></Link>
     </div>
     <div className="gap-4 flex">
-      <div className="hover:cursor-pointer">
-        <Link href="/Login"><span className="font-bold">Login</span></Link>
-      </div>
-      <div className="hover:cursor-pointer">
-        <Link href="/Register"><span className="font-bold">Register</span></Link>
-      </div>
+      {auth.currentUser ? 
+      (
+        <div>
+        {auth.currentUser?.email} <span onClick={handleSignOut} className='font-bold hover:cursor-pointer'> Logout</span>
+        </div>
+        )
+        
+       :
+       (
+        <div>
+          <div className="hover:cursor-pointer">
+          <Link href="/Login"><span className="font-bold">Login</span></Link>
+          </div>
+          <div className="hover:cursor-pointer">
+          <Link href="/Register"><span className="font-bold">Register</span></Link>
+          </div>
+        </div>
+        )
+      }
     </div>
   </nav>
   )
