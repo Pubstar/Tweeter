@@ -41,7 +41,8 @@ function page() {
   return (
     <div className="bg-[#A1C349] h-screen">
       <Nav />
-      <div className='flex justify-center mt-24'>
+      <div className='flex flex-col items-center'>
+      <h1 className='my-16 font-bold text-5xl text-[#243010]'>Register</h1>
         <form action="" onSubmit={submitForm} className='flex flex-col w-80 gap-4 border-2 border-[#243010] rounded-xl items-center p-8'>
           <label htmlFor="email">Email: </label>
           <input onChange={event => setEmail(event.target.value)} className='rounded-xl' type="email" name="email" id="email" />

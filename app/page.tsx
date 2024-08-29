@@ -8,8 +8,7 @@ export default function Home() {
   return (
       <main className="bg-[#A1C349] h-screen">
         <Nav />
-        <h1>Logged in as {auth.currentUser?.email}</h1>
-        <CreateTweet />
+        { auth.currentUser ? (<CreateTweet />) : ('') }
         <LoadTweets />
       </main>
   );

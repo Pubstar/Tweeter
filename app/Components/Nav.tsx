@@ -20,14 +20,15 @@ function Nav() {
     <div className="gap-4 flex">
       {auth.currentUser ? 
       (
-        <div>
-        {auth.currentUser?.email} <span onClick={handleSignOut} className='font-bold hover:cursor-pointer'> Logout</span>
+        <div className='flex gap-12'>
+          {auth.currentUser?.email}
+          <Link href="/Profile"><span className='font-bold hover:cursor-pointer'>Profile</span></Link>
+          <span onClick={handleSignOut} className='font-bold hover:cursor-pointer'>Logout</span>
         </div>
         )
-        
        :
        (
-        <div>
+        <div className='flex gap-24'>
           <div className="hover:cursor-pointer">
           <Link href="/Login"><span className="font-bold">Login</span></Link>
           </div>
