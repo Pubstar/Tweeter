@@ -14,7 +14,7 @@ const handleSignOut = () => {
 }
 
   return (
-    <div className="bg-[#A1C349] h-screen">
+    <div className="h-screen">
         <Nav />
         <div className='flex flex-col items-center'>
           <h1 className='my-16 font-bold text-5xl text-[#243010]'>Profile</h1>

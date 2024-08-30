@@ -13,7 +13,7 @@ function Nav() {
   }
 
   return (
-    <nav className="bg-[#243010] text-[#CAD593] flex justify-between py-4 px-12">
+    <nav className="bg-[#243010] text-[#CAD593] flex justify-between py-4 px-12 shadow-2xl">
     <div>
       <Link href="/"><span className="font-extrabold text-2xl">Tweeter</span></Link>
     </div>
