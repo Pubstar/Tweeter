@@ -32,7 +32,6 @@ function page() {
   const [password, setPassword] = useState('');
 
   const submitForm = (e: { preventDefault: () => void; }) => {
-    // We don't want the page to refresh
     e.preventDefault()
   
     createUser(username,password);
