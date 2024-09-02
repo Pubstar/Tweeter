@@ -1,7 +1,7 @@
 "use client"
 import mongoose from 'mongoose';
-import CreateTweet from './Components/createTweet';
-import LoadTweets from './Components/loadTweets';
+import CreateTweet from './Components/CreateTweet';
+import LoadTweets from './Components/LoadTweets';
 import Nav from "./Components/Nav";
 import {auth} from './firebase';
 
