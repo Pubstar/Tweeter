@@ -28,9 +28,9 @@ function page() {
         <h1 className='my-16 font-bold text-5xl text-[#243010]'>Login</h1>
         <form action="" onSubmit={submitForm} className='bg-[#8fbe8398] shadow-xl flex flex-col w-80 gap-4 border-2 border-[#243010] rounded-xl items-center p-16'>
           <label htmlFor="email">Email: </label>
-          <input onChange={(event) => setUsername(event.target.value)} className='rounded-xl border-2 border-[#243010]' type="email" name="email" id="email" />
+          <input onChange={(event) => setUsername(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="email" name="email" id="email" />
           <label htmlFor="password">Password: </label>
-          <input onChange={(event) => setPassword(event.target.value)} className='rounded-xl border-2 border-[#243010]' type="password" name="password" id="password" />
+          <input onChange={(event) => setPassword(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="password" name="password" id="password" />
           <button type="submit" className='shadow-xl border-2 border-[#243010] mt-2 bg-[#243010] text-[#CAD593] font-bold rounded-xl w-44'>Login</button>
         </form>
       </div>
