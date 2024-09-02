@@ -11,8 +11,8 @@ function createTweet() {
     const user = auth.currentUser?.email;
     try {
       const docRef = await addDoc(collection(db, "tweets"), {
-        user: {user},
-        tweet: {tweetText},
+        user,
+        tweetText,
         likes: 0
       });
       console.log("Document written with ID: ", docRef.id);

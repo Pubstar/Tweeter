@@ -7,7 +7,7 @@ function Tweet(props: any) {
             <h2 className='text-2xl font-extrabold'>{props.username}</h2>
         </div>
         <p className='p-16'>
-            {props.text}
+            {props.tweetText}
         </p>
         <div className='border-t-2 border-[#243010] p-6 bg-[#8fbe8398]'>
             <span className='font-semibold'>{props.likes} Likes</span>
