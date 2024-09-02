@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { collection, addDoc } from "firebase/firestore"; 
-import {db} from '../firebase';
+import {db, auth} from '../firebase';
 
 function createTweet() {
 
   const [tweetText, setTweetText] = useState('');
 
   const handleCreateTweet = async () => {
+    const user = auth.currentUser?.email;
     try {
       const docRef = await addDoc(collection(db, "tweets"), {
-        user: "TestUser",
-        tweet: {tweetText}
+        user: {user},
+        tweet: {tweetText},
+        likes: 0
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
