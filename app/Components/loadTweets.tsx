@@ -3,7 +3,7 @@ import Tweet from './Tweet';
 import { collection, getDocs } from "firebase/firestore";
 import {db} from '../firebase';
 
-function loadTweets() {
+function LoadTweets() {
   const [allTweets, setAllTweets] = useState([{}]);
   
   useEffect(() => {
@@ -25,11 +25,11 @@ function loadTweets() {
   
   return (
     <div className='flex justify-center mt-20 flex-col items-center gap-8'>
-      {allTweets.length > 0 && allTweets.map((tweet, i) => {
-        return <Tweet username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes}/>
+      {allTweets.length > 0 && allTweets.map((tweet: any = {}, i) => {
+        return <Tweet key={i} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes}/>
       })}
     </div>
   )
 }
 
-export default loadTweets
+export default LoadTweets

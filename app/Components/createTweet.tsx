@@ -3,7 +3,7 @@ import { collection, addDoc } from "firebase/firestore";
 import {db, auth} from '../firebase';
 
 
-function createTweet() {
+function CreateTweet() {
 
   const [tweetText, setTweetText] = useState('');
 
@@ -31,4 +31,4 @@ function createTweet() {
   )
 }
 
-export default createTweet
+export default CreateTweet

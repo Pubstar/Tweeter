@@ -4,7 +4,7 @@ import Nav from '../Components/Nav'
 import { auth } from '../firebase'
 import { useRouter } from 'next/navigation';
 
-function page() {
+function Page() {
 
   const router = useRouter();
 
@@ -27,4 +27,4 @@ const handleSignOut = () => {
   )
 }
 
-export default page
+export default Page

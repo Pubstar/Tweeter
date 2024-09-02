@@ -26,7 +26,7 @@ function createUser(email: string, password: string): User {
 }
 
 
-function page() {
+function Page() {
 
   const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -54,4 +54,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
