@@ -13,15 +13,14 @@ function Nav() {
   }
 
   return (
-    <nav className="bg-[#243010] text-[#CAD593] flex justify-between py-4 px-12 shadow-2xl">
+    <nav className="bg-[#243010] text-[#CAD593] flex justify-between py-4 px-12 shadow-2xl max-w-full">
     <div>
       <Link href="/"><span className="font-extrabold text-2xl">Tweeter</span></Link>
     </div>
     <div className="gap-4 flex">
       {auth.currentUser ? 
       (
-        <div className='flex gap-12'>
-          <span className='invisible md:visible'>{auth.currentUser?.email}</span>
+        <div className='flex md:gap-12 gap-4'>
           <Link href="/Profile"><span className='font-bold hover:cursor-pointer'>Profile</span></Link>
           <span onClick={handleSignOut} className='font-bold hover:cursor-pointer'>Logout</span>
         </div>
