@@ -10,8 +10,8 @@ interface User {
   password: string
 }
 
-function createUser(email: string, password: string): User {
-  createUserWithEmailAndPassword(auth, email, password)
+function createUser(email: string, password: string): Promise<User> {
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up 
       const user = userCredential.user;

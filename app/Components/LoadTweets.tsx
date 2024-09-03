@@ -28,6 +28,7 @@ function LoadTweets() {
       {allTweets.length > 0 && allTweets.map((tweet: any = {}, i) => {
         return <Tweet key={i} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes}/>
       })}
+      {allTweets.length < 1 && <div>Loading tweets...</div>}
     </div>
   )
 }
