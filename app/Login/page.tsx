@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Nav from '../Components/Nav'
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import {useRouter} from 'next/navigation'
 import {auth} from '../firebase';
 
@@ -16,7 +16,10 @@ function Page() {
   const submitForm = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, username, password);
+      setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, username, password);
+    })
       router.push('/');
     } catch (err) {
       console.log(err);
