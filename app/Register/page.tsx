@@ -4,29 +4,44 @@ import React, { useState } from 'react'
 import Nav from '../Components/Nav'
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../firebase';
+import {useRouter} from 'next/navigation'
 
 interface User {
   email: string,
   password: string
 }
 
+function Page() {
+
+const router = useRouter();
+
+const [errMessage, setErrMessage] = useState('');
+
 function createUser(email: string, password: string): User {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up 
       const user = userCredential.user;
-      return user;
+      return router.push('/');
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(error);
+
+      switch(errorCode) {
+        case "auth/email-already-in-use":
+          setErrMessage('Email address already in use.');
+        break;
+        case "auth/invalid-email":
+          setErrMessage('Please enter a valid email address.');
+        break;
+        case "auth/weak-password":
+          setErrMessage('Please use a stronger password.');
+      }
     });
     return {email,password};
 }
-
-
-function Page() {
 
   const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,6 +63,7 @@ function Page() {
           <label htmlFor="password">Password: </label>
           <input onChange={event => setPassword(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="password" name="password" id="password" />
           <button type='submit' className='shadow-xl border-2 border-[#243010] mt-2 bg-[#243010] text-[#CAD593] font-bold rounded-xl w-44'>Create account</button>
+          <span className='pt-4 text-red-600 font-bold'>{errMessage}</span>
         </form>
       </div>
     </div>
