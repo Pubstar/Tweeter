@@ -26,7 +26,7 @@ function LoadTweets() {
   return (
     <div className='flex justify-center mt-20 flex-col items-center gap-8'>
       {allTweets.length > 0 && allTweets.map((tweet: any = {}, i) => {
-        return <Tweet key={i} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes}/>
+        return <Tweet key={i} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes} id={tweet?.id}/>
       })}
       {allTweets.length < 1 && <div>Loading tweets...</div>}
     </div>

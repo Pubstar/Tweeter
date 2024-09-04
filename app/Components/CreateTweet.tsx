@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore"; 
 import {db, auth} from '../firebase';
 
-
 function CreateTweet() {
-
   const [tweetText, setTweetText] = useState('');
 
   const handleCreateTweet = async () => {
@@ -13,12 +11,16 @@ function CreateTweet() {
       const docRef = await addDoc(collection(db, "tweets"), {
         user,
         tweetText,
-        likes: 0
+        likes: 0,
       });
       console.log("Document written with ID: ", docRef.id);
+      await updateDoc(docRef, {
+        id: docRef.id
+      })
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    window.location.reload();
   }
 
   return (
