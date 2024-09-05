@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore"; 
 import {db, auth} from '../firebase';
-import { useRouter } from 'next/navigation';
 
 function CreateTweet() {
-  const router = useRouter();
   const [tweetText, setTweetText] = useState('');
 
   const handleCreateTweet = async () => {
@@ -14,17 +12,15 @@ function CreateTweet() {
         user,
         tweetText,
         likes: 0,
-      })
+      });
       console.log("Document written with ID: ", docRef.id);
       await updateDoc(docRef, {
         id: docRef.id
       })
-      .then(() => {
-        return router.push('/Profile');
-      })
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    window.location.reload();
   }
 
   return (

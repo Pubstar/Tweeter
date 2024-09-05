@@ -1,19 +1,14 @@
 import React from 'react'
 import { auth, db } from '../firebase'
 import { deleteDoc, doc } from "firebase/firestore"
-import { useRouter } from 'next/navigation';
 
 function Tweet(props: any) {
-
-  const router = useRouter();
 
   const originalPoster = auth.currentUser?.email == props.username;
 
   const deleteTweet = async () => {
-    await deleteDoc(doc(db, "tweets", props.id))
-    .then(() => {
-      router.push('/Profile');
-    })
+    await deleteDoc(doc(db, "tweets", props.id));
+    window.location.reload();
   }
 
   return (
