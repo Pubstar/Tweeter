@@ -8,8 +8,9 @@ function Nav() {
   const router = useRouter();
 
   const handleSignOut = () => {
-    auth.signOut();
-    router.push('/');
+    auth.signOut().then(() => {
+      return router.refresh();
+    })
   }
 
   return (
