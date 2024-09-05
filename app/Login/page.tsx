@@ -18,9 +18,11 @@ function Page() {
     try {
       setPersistence(auth, browserSessionPersistence)
       .then(() => {
-        return signInWithEmailAndPassword(auth, username, password);
-    })
-      router.push('/');
+        return signInWithEmailAndPassword(auth, username, password)
+        .then(() => {
+          return router.push('/');
+        })
+      })
     } catch (err) {
       console.log(err);
       setErrMessage('Wrong email or password.');
