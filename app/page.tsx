@@ -10,7 +10,7 @@ export default function Home() {
   const [reload, setReload] = useState(0);
 
   const setReloadAccess = () => {
-    setReload(Math.random);
+    setReload(Math.random());
   }
 
   return (
