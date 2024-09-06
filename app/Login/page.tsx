@@ -15,7 +15,6 @@ function Page() {
 
   const submitForm = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    try {
       setPersistence(auth, browserSessionPersistence)
       .then(() => {
         return signInWithEmailAndPassword(auth, username, password)
@@ -23,10 +22,10 @@ function Page() {
           return router.push('/');
         })
       })
-    } catch (err) {
-      console.log(err);
-      setErrMessage('Wrong email or password.');
-    }
+      .catch(err => {
+        console.log(err);
+        setErrMessage('Wrong email or password.');
+      })
   }
 
   return (

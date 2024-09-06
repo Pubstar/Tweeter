@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-      <main className="h-screen">
+      <main className="h-screen bg-[#e5f5dc]">
         <Nav />
         { auth.currentUser ? (<CreateTweet setReloadAccess={setReloadAccess}/>) : ('') }
         <LoadTweets reload={reload}/>
