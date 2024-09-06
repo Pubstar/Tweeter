@@ -3,7 +3,7 @@ import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import {db, auth} from '../firebase';
 import { useRouter } from 'next/navigation';
 
-function CreateTweet() {
+function CreateTweet(props: any) {
   const router = useRouter();
   const [tweetText, setTweetText] = useState('');
 
@@ -20,7 +20,8 @@ function CreateTweet() {
         id: docRef.id
       })
       .then(() => {
-        router.push('/Profile')
+        props.setReloadAccess();
+        router.push('/');
       })
     } catch (e) {
       console.error("Error adding document: ", e);

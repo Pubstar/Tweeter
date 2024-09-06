@@ -12,7 +12,7 @@ function Tweet(props: any) {
   const deleteTweet = async () => {
     await deleteDoc(doc(db, "tweets", props.id))
     .then(() => {
-      router.push('/Profile')
+      props.forceReload();
     })
   }
 

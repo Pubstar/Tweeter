@@ -3,8 +3,12 @@ import Tweet from './Tweet';
 import { collection, getDocs } from "firebase/firestore";
 import {db} from '../firebase';
 
-function LoadTweets() {
+function LoadTweets(props: any) {
   const [allTweets, setAllTweets] = useState([{}]);
+
+  const forceReload = () => {
+    setAllTweets([{}]);
+  }
   
   useEffect(() => {
     const fetchData = async () => {
@@ -21,14 +25,15 @@ function LoadTweets() {
       }
     }
     fetchData();
-  }, []);
+  }, [props.reload, allTweets]);
   
   return (
     <div className='flex justify-center mt-20 flex-col items-center gap-8'>
+      <span className='hidden absolute'>{props.reload}</span>
       {allTweets.length > 0 && allTweets.map((tweet: any = {}, i) => {
-        return <Tweet key={i} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes} id={tweet?.id}/>
+        return <Tweet key={i} forceReload={forceReload} username={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes} id={tweet?.id}/>
       })}
-      {allTweets.length < 1 && <div>Loading tweets...</div>}
+      {allTweets.length < 1 && <div>No tweets yet</div>}
     </div>
   )
 }
