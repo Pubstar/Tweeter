@@ -10,12 +10,11 @@ export default function Home() {
   const [reload, setReload] = useState(0);
 
   const setReloadAccess = () => {
-    console.log('refreshing')
     setReload(Math.random);
   }
 
   return (
-      <main className="h-screen bg-[#e5f5dc]">
+      <main className="h-screen">
         <Nav />
         { auth.currentUser ? (<CreateTweet setReloadAccess={setReloadAccess}/>) : ('') }
         <LoadTweets reload={reload}/>

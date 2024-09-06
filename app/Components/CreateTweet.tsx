@@ -9,9 +9,11 @@ function CreateTweet(props: any) {
 
   const handleCreateTweet = async () => {
     const user = auth.currentUser?.email;
+    const displayName = auth.currentUser?.displayName;
     try {
       const docRef = await addDoc(collection(db, "tweets"), {
         user,
+        displayName,
         tweetText,
         likes: 0,
       });

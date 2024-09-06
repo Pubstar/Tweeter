@@ -7,7 +7,7 @@ function Tweet(props: any) {
 
   const router = useRouter();
 
-  const originalPoster = auth.currentUser?.email == props.username;
+  const originalPoster = auth.currentUser?.email == props.email;
 
   const deleteTweet = async () => {
     await deleteDoc(doc(db, "tweets", props.id))
