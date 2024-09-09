@@ -57,18 +57,18 @@ const [password, setPassword] = useState('');
   }  
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-[#1c1b30]">
       <Nav />
       <div className='flex flex-col items-center'>
-      <h1 className='my-16 font-bold text-5xl text-[#243010]'>Register</h1>
-        <form action="" onSubmit={submitForm} className='bg-[#8fbe8398] shadow-xl flex flex-col w-80 gap-4 border-2 border-[#243010] rounded-xl items-center p-16'>
+      <h1 className='my-16 font-bold text-5xl text-[#c7d3fc]'>Register</h1>
+        <form action="" onSubmit={submitForm} className='text-[#c7d3fc] bg-[#2e3d7e] shadow-xl flex flex-col w-80 gap-4 border-2 border-[#243010] rounded-xl items-center p-16'>
           <label htmlFor="email">Email: </label>
           <input onChange={event => setEmail(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="email" name="email" id="email" />
           <label htmlFor="name">Username: </label>
           <input onChange={event => setName(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="text" name="name" id="name" />
           <label htmlFor="password">Password: </label>
           <input onChange={event => setPassword(event.target.value)} className='rounded-xl border-2 border-[#243010] p-2' type="password" name="password" id="password" />
-          <button type='submit' className='shadow-xl border-2 border-[#243010] mt-2 bg-[#243010] text-[#CAD593] font-bold rounded-xl w-44'>Create account</button>
+          <button type='submit' className='shadow-xl border-2 border-[#243010] mt-2 bg-[#211964] text-[#c7d3fc] font-bold rounded-xl w-44'>Create account</button>
           <span className='pt-4 text-red-600 font-bold'>{errMessage}</span>
         </form>
       </div>

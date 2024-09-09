@@ -14,15 +14,15 @@ const handleSignOut = () => {
 }
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-[#1c1b30] text-[#c7d3fc]">
         <Nav />
         <div className='flex flex-col items-center'>
-          <h1 className='my-16 font-bold text-5xl text-[#243010]'>Profile</h1>
+          <h1 className='my-16 font-bold text-5xl'>Profile</h1>
           <ul>
-            <li className='font-bold text-[#243010]'>Email: {auth.currentUser?.email}</li>
-            <li className='font-bold text-[#243010]'>Username: {auth.currentUser?.displayName}</li>
+            <li className='font-bold'>Email: {auth.currentUser?.email}</li>
+            <li className='font-bold'>Username: {auth.currentUser?.displayName}</li>
           </ul>
-          <span onClick={handleSignOut} className='mt-20 font-bold hover:cursor-pointer text-[#243010] border-2 border-[#243010] py-2 px-8'>Logout</span>
+          <span onClick={handleSignOut} className='mt-20 font-bold hover:cursor-pointer bg-[#211964] text-[#c7d3fc] border-2 border-[#243010] py-2 px-8'>Logout</span>
         </div>
     </div>
   )
