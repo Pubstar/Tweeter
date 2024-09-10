@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
-import { deleteDoc, doc, updateDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore"
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
 
@@ -30,12 +30,11 @@ function Tweet(props: any) {
     const docRef = doc(db, 'tweets', props.id);
     if(!liked)
     { 
-      const newLikes = props.likes + 1;
-      await updateDoc(docRef, {likes: newLikes})
+      await updateDoc(docRef, {likes: [...props.likes, auth.currentUser?.email]});
       setLiked(!liked);
     } else {
-      const newLikes = props.likes - 1;
-      await updateDoc(docRef, {likes: newLikes})
+      let newList = props.likes.filter((item: string) => item !== auth.currentUser?.email);
+      await updateDoc(docRef, {likes: newList})
       setLiked(!liked);
     }
   }

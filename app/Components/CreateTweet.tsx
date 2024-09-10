@@ -15,7 +15,7 @@ function CreateTweet(props: any) {
         user,
         displayName,
         tweetText,
-        likes: 0,
+        likes: [],
       });
       console.log("Document written with ID: ", docRef.id);
       await updateDoc(docRef, {
