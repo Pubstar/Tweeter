@@ -37,6 +37,7 @@ function Tweet(props: any) {
       await updateDoc(docRef, {likes: newList})
       setLiked(!liked);
     }
+    props.forceReload();
   }
 
   return (

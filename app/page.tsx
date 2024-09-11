@@ -17,7 +17,7 @@ export default function Home() {
       <main className="h-screen bg-[#1c1b30]">
         <Nav />
         { auth.currentUser ? (<CreateTweet setReloadAccess={setReloadAccess}/>) : ('') }
-        <LoadTweets reload={reload}/>
+        <LoadTweets reload={reload} setReloadAccess={setReloadAccess}/>
       </main>
   );
 }

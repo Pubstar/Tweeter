@@ -7,7 +7,7 @@ function LoadTweets(props: any) {
   const [allTweets, setAllTweets] = useState([{}]);
 
   const forceReload = () => {
-    setAllTweets([{}]);
+    props.setReloadAccess();
   }
   
   useEffect(() => {
