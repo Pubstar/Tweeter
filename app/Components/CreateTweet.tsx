@@ -8,6 +8,7 @@ function CreateTweet(props: any) {
   const [tweetText, setTweetText] = useState('');
 
   const handleCreateTweet = async () => {
+    if(tweetText.length < 1) return;
     const user = auth.currentUser?.email;
     const displayName = auth.currentUser?.displayName;
     try {

@@ -49,6 +49,10 @@ function Tweet(props: any) {
     props.forceReload();
   }
 
+  const showLikes = () => {
+    alert(props.likes)
+  }
+
   return (
     <div className='border-2 border-[#243010] rounded-2xl shadow-xl w-[80%] md:w-96 text-[#c7d3fc] bg-[#2e3d7e]'>
         <div className='p-6 border-[#243010] border-b-2 bg-[#211964]'>
@@ -59,7 +63,7 @@ function Tweet(props: any) {
             {props.tweetText}
         </p>
         <div className='border-t-2 border-[#243010] p-6 bg-[#211964] justify-between flex'>
-            <span className='font-semibold'>{props.likes?.length} Likes</span>
+            <span onClick={showLikes} className='font-semibold hover:cursor-pointer'>{props.likes?.length} Likes</span>
             {auth.currentUser? (<Image className='hover:cursor-pointer' onClick={handleLike} src={likeImg()} width={25} height={25} alt='Like tweet' />) : ''}
             {originalPoster ? (<span onClick={deleteTweet} className='font-semibold hover:cursor-pointer text-red-600'>Delete tweet</span>) : ''}
         </div>
