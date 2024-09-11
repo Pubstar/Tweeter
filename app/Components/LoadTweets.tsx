@@ -25,7 +25,7 @@ function LoadTweets(props: any) {
       }
     }
     fetchData();
-  }, [props.reload, allTweets]);
+  }, [props.reload]);
   
   return (
     <div className='flex justify-center mt-20 flex-col items-center gap-8'>
