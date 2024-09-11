@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
-import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore"
+import { deleteDoc, doc, updateDoc } from "firebase/firestore"
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
 
@@ -18,6 +18,15 @@ function Tweet(props: any) {
       props.forceReload();
     })
   }
+
+  useEffect(() => {
+    if(props.likes) {
+      props.likes.forEach((name: string) => {
+        console.log(name)
+        if(auth.currentUser?.email == name) setLiked(true);
+      })
+    }
+  }, [props.likes])
 
   const likeImg = () => {
     if(liked) return '/likeActive.png'
@@ -49,7 +58,7 @@ function Tweet(props: any) {
             {props.tweetText}
         </p>
         <div className='border-t-2 border-[#243010] p-6 bg-[#211964] justify-between flex'>
-            <span className='font-semibold'>{props.likes} Likes</span>
+            <span className='font-semibold'>{props.likes?.length} Likes</span>
             {auth.currentUser? (<Image className='hover:cursor-pointer' onClick={handleLike} src={likeImg()} width={25} height={25} alt='Like tweet' />) : ''}
             {originalPoster ? (<span onClick={deleteTweet} className='font-semibold hover:cursor-pointer text-red-600'>Delete tweet</span>) : ''}
         </div>
