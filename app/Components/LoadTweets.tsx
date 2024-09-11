@@ -31,7 +31,7 @@ function LoadTweets(props: any) {
     <div className='flex justify-center mt-20 flex-col items-center gap-8'>
       <span className='hidden absolute'>{props.reload}</span>
       {allTweets.length > 0 && allTweets.map((tweet: any = {}, i) => {
-        return <Tweet key={i} forceReload={forceReload} username={tweet?.displayName} email={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes} id={tweet?.id}/>
+        return <Tweet key={i} forceReload={forceReload} createdAt={tweet?.createdAt} username={tweet?.displayName} email={tweet?.user} tweetText={tweet?.tweetText} likes={tweet?.likes} id={tweet?.id}/>
       })}
       {allTweets.length < 1 && <div>No tweets yet</div>}
     </div>

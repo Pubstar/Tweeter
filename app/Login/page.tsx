@@ -19,7 +19,6 @@ function Page() {
       .then(() => {
         return signInWithEmailAndPassword(auth, username, password)
         .then(() => {
-          console.log(auth.currentUser?.displayName)
           return router.push('/');
         })
       })
