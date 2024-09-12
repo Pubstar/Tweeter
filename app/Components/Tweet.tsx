@@ -22,13 +22,13 @@ function Tweet(props: any) {
   useEffect(() => {
     if(props.likes) {
       props.likes.forEach((name: string) => {
-        console.log(name)
         if(auth.currentUser?.email == name) setLiked(true);
       })
     }
   }, [props.likes])
 
   const likeImg = () => {
+    if(!auth.currentUser) return '/like.png';
     if(liked) return '/likeActive.png'
     else if (!liked) return '/like.png'
 
